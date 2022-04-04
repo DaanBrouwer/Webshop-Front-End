@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/system";
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Components/About";
 import Navbar from "./Components/Navbar";
@@ -26,15 +26,17 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navbar darkMode={darkmode} handleThemeChange={handleThemeChange} />
-        <Container>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<ProductList />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </Container>
+        <BrowserRouter>
+          <Navbar darkMode={darkmode} handleThemeChange={handleThemeChange} />
+          <Container>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<ProductList />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </Container>
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );
