@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 import Container from "@mui/material/Container";
 import { ThemeProvider } from "@mui/system";
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Components/About";
 import Navbar from "./Components/Navbar";
