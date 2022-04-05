@@ -26,17 +26,15 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Navbar darkMode={darkmode} handleThemeChange={handleThemeChange} />
-          <Container>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/products" element={<ProductList />} />
-              <Route path="/products/:id" element={<ProductDetails />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </Container>
-        </BrowserRouter>
+        <Navbar darkMode={darkmode} handleThemeChange={handleThemeChange} />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Container>
       </ThemeProvider>
     </>
   );
