@@ -27,13 +27,13 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-      
+
     steps:
     - uses: actions/checkout@v2
-      name: Check out code
+    - name: Check out code
 
     - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build and Push Docker Image
+    - name: Build and Push Docker Image
       with:
         image: daanbrouwer/webshopapp
         registry: docker.io
