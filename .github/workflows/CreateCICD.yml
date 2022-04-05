@@ -28,14 +28,14 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
   steps:
-  - uses: actions/checkout@v2
-    name: Check out code
+    - uses: actions/checkout@v2
+      name: Check out code
 
-- name: Build and Push Docker Image
-  uses: mr-smithers-excellent/docker-build-push@v5
-  with:
-    image: daanbrouwer/webshopapp
-    registry: docker.io
-    tag: Webshop-FrontEnd 
-    username: ${{ secrets.DOCKER_USERNAME }}
-    password: ${{ secrets.DOCKER_PASSWORD }}
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      name: Build and Push Docker Image
+      with:
+        image: daanbrouwer/webshopapp
+        registry: docker.io
+        tag: Webshop-FrontEnd
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
