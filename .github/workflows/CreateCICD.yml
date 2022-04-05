@@ -27,7 +27,8 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-
+    
+    steps:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
         image: daanbrouwer/webshopapp
