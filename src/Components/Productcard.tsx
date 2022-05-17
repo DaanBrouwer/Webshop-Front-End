@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { red } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 import { Product } from "../Models/product";
 
 interface Props {
@@ -36,7 +37,7 @@ function Productcard({ product }: Props) {
             backgroundSize: "contain",
             bgcolor: "primary.light",
           }}
-          image={product.brand}
+          image="https://picsum.photos/200"
           alt="green iguana"
           title={product.name}
         />
@@ -51,7 +52,9 @@ function Productcard({ product }: Props) {
       </CardActionArea>
       <CardActions>
         <Button size="small">Add to cart</Button>
-        <Button size="small">Learn More</Button>
+        <Button component={Link} to={`/products/${product.id}`} size="small">
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
