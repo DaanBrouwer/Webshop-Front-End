@@ -9,19 +9,17 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Product } from "../Models/product";
-
+import agent from "../agent";
 function ProductDetails() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`https:localhost:5001/api/Products/${id}`)
+    agent.ProductList.details(parseInt(id!))
       .then((response) => setProduct(response.data))
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));

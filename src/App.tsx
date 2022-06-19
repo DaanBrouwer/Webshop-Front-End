@@ -6,7 +6,10 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Components/About";
+import BasketPage from "./Components/BasketPage";
+import Chat from "./Components/Chat";
 import Navbar from "./Components/Navbar";
+import OrderComplete from "./Components/OrderComplete";
 import ProductDetails from "./Components/ProductDetails";
 import ProductList from "./Components/ProductList";
 
@@ -33,6 +36,9 @@ function App() {
             <Route path="/products" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/about" element={<About />} />
+            <Route path="/basket" element={<BasketPage />} />
+            <Route path="/ordercomplete" element={<OrderComplete />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
         </Container>
       </ThemeProvider>
