@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab";
 import {
   Avatar,
   Button,
@@ -10,6 +11,9 @@ import {
   Typography,
 } from "@mui/material";
 import { red } from "@mui/material/colors";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import agent from "../agent";
 import { Product } from "../Models/product";
 
 interface Props {
@@ -17,6 +21,14 @@ interface Props {
 }
 
 function Productcard({ product }: Props) {
+  const [loading, setLoading] = useState(false);
+
+  function handleAddItem(productId: number) {
+    setLoading(true);
+    agent.Basket.addItem(productId)
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
+  }
   return (
     <Card>
       <CardHeader
@@ -36,7 +48,7 @@ function Productcard({ product }: Props) {
             backgroundSize: "contain",
             bgcolor: "primary.light",
           }}
-          image={product.brand}
+          image="https://picsum.photos/200"
           alt="green iguana"
           title={product.name}
         />
@@ -50,8 +62,16 @@ function Productcard({ product }: Props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small">Add to cart</Button>
-        <Button size="small">Learn More</Button>
+        <LoadingButton
+          loading={loading}
+          onClick={() => handleAddItem(product.id)}
+          size="small"
+        >
+          Add to cart
+        </LoadingButton>
+        <Button component={Link} to={`/products/${product.id}`} size="small">
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );

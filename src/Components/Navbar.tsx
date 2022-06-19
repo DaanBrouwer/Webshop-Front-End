@@ -15,6 +15,8 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Badge } from "@material-ui/core";
+import { ShoppingCart } from "@material-ui/icons";
 
 interface Props {
   darkMode: boolean;
@@ -136,7 +138,18 @@ function Navbar({ darkMode, handleThemeChange }: Props) {
               </Button>
             ))}
           </Box>
-
+          <Box display="flex" alignItems="center">
+            <IconButton
+              component={NavLink}
+              to="/basket"
+              size="large"
+              sx={{ color: "inherit" }}
+            >
+              <Badge badgeContent={4} color="secondary">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
